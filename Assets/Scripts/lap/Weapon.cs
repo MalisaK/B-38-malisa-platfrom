@@ -4,9 +4,7 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    [SerializeField] public string  Ishootable;
-    
-    private int damage;
+    [SerializeField] private int damage;
     public int Damage
     {
         get
@@ -16,17 +14,29 @@ public abstract class Weapon : MonoBehaviour
         set
         {
             damage = value;
-
         }
     }
 
-    public abstract void OnHitWith(Character _character);
-    public abstract void Move();
-   
-    public int GetShootDiraction()
-    {
-        return 1;
-    
-    }
+    //abstract
+    protected Ishootable shooter;
 
+    public abstract void OnHitWith(Character character);
+    public abstract void Move();
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        OnHitWith(other.GetComponent<Character>());
+    }
+    public void Init(int newDamage, Ishootable ower)
+    {
+        Damage = newDamage;
+        shooter = ower;
+    }
+    public int GetShootDirection()
+    {
+        float shootDir = shooter.SpawnPoint.position.x - shooter.SpawnPoint.parent.position.x;
+        if (shootDir > 0)
+            return 1;
+        else return -1;
+    }
 }

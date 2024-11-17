@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class Bnana : Weapon
 {
@@ -16,7 +17,8 @@ public class Bnana : Weapon
     }
     public override void OnHitWith(Character _character)
     {
-        
+        if (_character is Ennamy)
+            _character.TakeDamage(this.Damage);
     }
 
     private void Start() 

@@ -9,18 +9,11 @@ public  class Ant : Ennamy
 
     private void Start()
     {
-        Init(10);
-        Behaviour();
+        Init(100);
     }
 
 
 
-    public void Init(int newHealth)
-    {
-        Health = newHealth;
-    
-    
-    }
     private void FixedUpdate()
     {
         Behaviour();

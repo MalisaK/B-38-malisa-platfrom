@@ -34,7 +34,7 @@ public class Player : Character, Ishootable //ตรงนี้เพิ่ม isshootable
     //
     public void Start()
     {
-        InIt(100);
+        Init(100);
         bulletSpawnTime = 2.0f;
         bulletTime = 0.0f;
     

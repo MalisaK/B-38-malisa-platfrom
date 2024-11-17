@@ -46,10 +46,15 @@ public class Crocordie : Ennamy, Ishootable
     {
         if (BulletTime <= 0)
         {
-            Instantiate(Bullet, SpawnPoint.position, Quaternion.identity);
-
+            anim.SetTrigger("Shoot");
+            GameObject obj = Instantiate(Bullet, SpawnPoint.position, Quaternion.identity);
+            Rock rock = obj.GetComponent<Rock>();
+            rock.Init(20, this);
             BulletTime = BulletSpawnTime;
         }
-    
+    }
+    void Start()
+    {
+        Init(100);
     }
 }
